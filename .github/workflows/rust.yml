@@ -14,6 +14,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+      # Mobile folder working directory.
+        working-directory: guessing_game
+
     steps:
     - uses: actions/checkout@v3
     - name: Build
