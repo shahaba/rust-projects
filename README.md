@@ -1,4 +1,5 @@
 # Rust Projects
+![Rust workflow](https://github.com/shahaba/rust-projects/actions/workflows/rust.yml/badge.svg)
 
 My working repo for going through the [Rust Book](https://rust-book.cs.brown.edu/title-page.html)
 

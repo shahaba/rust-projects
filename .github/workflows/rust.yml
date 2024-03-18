@@ -16,7 +16,7 @@ jobs:
 
     defaults:
       run:
-      # Mobile folder working directory.
+      # Testing folder working directory.
         working-directory: guessing_game
 
     steps:
