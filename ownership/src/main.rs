@@ -24,17 +24,15 @@ fn main() {
 
     let mut x: i32 = 4;
     println!("First value of x: {x}");
-    
+
     x = borrowing(&mut x);
     println!("Mutated value of x from borrowing: {x}");
-
 
     // using slices to interact with Strings
     let s: String = String::from("HelloWorld Universe");
     let slice = first_word(&s);
 
     println!("First Word of {}: {} and {}", s, first_word(&s), slice);
-
 }
 
 fn add_suffix(mut name: String) -> String {
@@ -60,16 +58,16 @@ fn borrowing(x: &mut i32) -> i32 {
     // can't change v because num is still in use, and we would be changing the reference
     // println!("The 3rd number in v: {num}"); // would fail
 
-    return *x + 1
+    return *x + 1;
 }
 
 fn first_word(word: &String) -> &str {
     let bytes = word.as_bytes();
-    
+
     // iterate through word
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
-            return &word[0..i]
+            return &word[0..i];
         }
     }
 
