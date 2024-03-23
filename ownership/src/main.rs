@@ -58,7 +58,7 @@ fn borrowing(x: &mut i32) -> i32 {
     // can't change v because num is still in use, and we would be changing the reference
     // println!("The 3rd number in v: {num}"); // would fail
 
-    return *x + 1;
+    *x + 1
 }
 
 fn first_word(word: &String) -> &str {
