@@ -1,0 +1,6 @@
+steps:
+  - commands:
+      - "cd ownership && cargo run"
+      - "cd guessing_gae && cargo run"
+      - "cd variables && cargo run"
+    label: ":rust: Run Cargo"
