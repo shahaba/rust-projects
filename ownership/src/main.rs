@@ -75,3 +75,13 @@ fn first_word(word: &String) -> &str {
 
     &word[..]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn can_smile() {
+        assert_eq!(first_word(&String::from("HelloWorld Universe")), "HelloWorld");
+    }
+}
