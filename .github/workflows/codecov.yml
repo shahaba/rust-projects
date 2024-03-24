@@ -16,6 +16,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Cache Cargo dependencies and build artifacts
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
+
     - name: Build
       run: cargo build --verbose
 
@@ -26,10 +37,9 @@ jobs:
       run: cargo install cargo-tarpaulin
 
     - name: Run Tests with Tarpaulin
-      run: cargo tarpaulin --output Xml
+      run: cargo tarpaulin --out Xml
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        slug: shahaba/rust-projects/ownership
