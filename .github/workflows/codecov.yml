@@ -16,30 +16,41 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache Cargo dependencies and build artifacts
+    - name: Cache Cargo dependencies and grcov
       uses: actions/cache@v2
       with:
         path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          target
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          target/
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-
 
-    - name: Build
-      run: cargo build --verbose
+    - name: Install grcov
+      run: cargo install grcov
+
+    - name: Set up environment for code coverage
+      run: |
+        echo "CARGO_INCREMENTAL=0" >> $GITHUB_ENV
+        echo "RUSTFLAGS=-Zinstrument-coverage" >> $GITHUB_ENV
+        echo "LLVM_PROFILE_FILE=coverage-%p-%m.profraw" >> $GITHUB_ENV
 
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo test
 
-    - name: Install Tarpaulin
-      run: cargo install cargo-tarpaulin
+    - name: Generate code coverage report
+      run: |
+        grcov ./target/debug/ -s . -t lcov --llvm --branch --ignore-not-existing --ignore "/*" -o ./coverage/
+        grcov ./target/debug/ -s . -t cobertura --llvm --branch --ignore-not-existing --ignore "/*" -o ./coverage/cobertura.xml
 
-    - name: Run Tests with Tarpaulin
-      run: cargo tarpaulin --out Xml
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4.0.1
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
       with:
+        file: ./coverage/cobertura.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true
         token: ${{ secrets.CODECOV_TOKEN }}
+
