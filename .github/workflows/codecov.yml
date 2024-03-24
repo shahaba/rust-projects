@@ -1,5 +1,7 @@
-name: Upload coverage reports to Codecov
-on: [push, pull_request]
+name: Coverage Report
+on: 
+  push:
+    branches: ["main"]
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -17,6 +19,9 @@ jobs:
 
     - name: Run tests
       run: cargo test --verbose
+
+    - name: Install Tarpaulin
+      run: cargo install cargo-tarpaulin
 
     - name: Run Tests with Tarpaulin
       run: cargo tarpaulin --output Xml
