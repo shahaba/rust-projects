@@ -1,8 +1,8 @@
 name: Coverage Report
 
 on: 
-  push:
-    branches: ["main", "shahaba-codecov"]
+  pull_request: 
+    branches: ["main"]
 
 jobs:
   run:
