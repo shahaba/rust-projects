@@ -16,6 +16,7 @@ You can go into any of the folders and run: `cargo run` to compile and run the r
     - [Defining Structs](#defining-structs)
     - [Struct update syntax](#struct-update-syntax)
     - [Struct Variations](#struct-variations)
+    - [Methods](#methods)
 
 ## Chapter 2 - Guessing Game
 
@@ -110,3 +111,28 @@ There are also two slight variations on the struct syntax:
 - *Unit-Like Struct*
   - A struct with no fields or names; Acts as a placeholder when we don't have any data to store as the type. This is convient for traits, which we see more in ch10
     - Ex.: `struct AlwaysEqual;`
+
+### Methods
+
+Structs can also implement methods or functions. They can be used to return a value or perform some operation with the struct, much like a `class` for an object in other languages
+
+These methods are defined usings the `impl` keyword, outside and after the definition of a `struct`:
+
+```Rust
+impl Rectangle {
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+```
+
+We also see the use of an associated function (`square`) in the `impl` that allows us to create a new Rectangle of `square` shape via `let sq = Rectangle::square(3);`
+
+We can also have more than 1 `impl` block for each struct
