@@ -20,6 +20,7 @@ You can go into any of the folders and run: `cargo run` to compile and run the r
   - [Chapter 6 - Enums](#chapter-6---enums)
     - [The Option Enum](#the-option-enum)
     - [The `match` Control Flow](#the-match-control-flow)
+  - [Chapter 7 - Packages, Crates, and Modules](#chapter-7---packages-crates-and-modules)
 
 ## Chapter 2 - Guessing Game
 
@@ -218,3 +219,5 @@ fn value_in_cents(coin: Coin) -> u8 {
     }
 }
 ```
+
+## Chapter 7 - Packages, Crates, and Modules
