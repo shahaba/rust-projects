@@ -484,3 +484,64 @@ fn read_username_from_file() -> Result<String, io::Error> {
 
 **Note**: `?` can only be used in functions whose return type is compatible with `?` (that is Ok and Err `Results`, `Options`, or another implementation of `FromResidual`)
 
+## Chapter 10 - Generics, Traits, and Lifetimes
+
+### Generics
+
+In Rust, generics act as placeholders for actual types or properties in our code. Oftentimes, we don't know the exact type that will be given, but we want to ensure that our program runs the same no matter what (valid) input we give it
+
+There's an added layer of ensuring that operations we apply to our generic placeholders are valid, and so alongside generics we sometimes have to add constraints the limit the input types
+
+We can use generics with functions, struts, enums, and methods
+
+### Under the Hood
+
+At compile time, Rust does something called monomorphization, which converts our generic codes into specific types by filling in what concrete types are used when we try to run our program.
+
+### Traits
+
+A trait is like an interface in other languages (or an Abstract Class). It defines a set of behaviours that each implementation needs to define when using that trait.
+
+For Example:
+```Rust
+pub trait Summary {
+	fn summarize(&self) -> String; // an abstract function that each object using the Summary trait needs to implement
+}
+```
+
+`summarize` here is the behaviour that we want each usage of this trait to implement
+
+A trait can have more than one abstract behaviour, and can even define the default behaviours we want it to implement.
+
+Traits can also be used as parameters, i.e. we are expecting a type that has a given trait or returning a type that implements a given trait. This looks like:
+
+```Rust
+pub fn notify(item: &impl Summary) {
+	println!("Breaking news {}", item.summarize());
+}
+```
+
+which is a shorthand form for:
+
+```Rust
+pub fn notify<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+```
+
+The second version is called the Trait Bound syntax, or trait bound, but is much longer than our first implementation. We can event specify more than one trait bound, using the `+` syntax:
+
+	pub fn notify(item: &(impl Summary + Display)) {...}`
+
+
+### Lifetimes
+
+As we say in [[Chapter 4 - Ownership]], a reference can't outlive its data. So when we pass and return a references as part of a function, method, or struct, we need to ensure that it lives at least as long as its data
+
+We need to define a lifetime whenever we work with references:
+- **Returning a Reference** - when we return a reference as part of a function, we have to define its lifetime. This ensure it remains valid as long as it is intended on being used
+- **Accepting a Reference** - if we accept more than one input, with different lifetimes, we need to ensure that we specify the relationship between those lifetimes
+- **Structs with References** - we have to ensure a structs lifetime doesn't extend beyond the references it contains
+- **Methods**
+- **Static References** - when a reference has a static lifetime, we have to annotate it explicitly with `'static`
+
