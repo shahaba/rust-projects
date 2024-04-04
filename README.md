@@ -12,7 +12,7 @@
 - [CH 9 - Error Handling]([09]%20error_handling/README.md)
 - [CH 10 - Generics]([10]%20generics/README.md)
 - [CH 11 - Automated Tests]([11]%20automated_tests/README.md)
-- [CH 12 - IO Project]
+- [CH 12 - IO Project](/[12]%20minigrep/README.md)
 - [CH 13 - Functional Language Features]
 - [CH 14 - Cargo & Crates]
 - [CH 15 - Smart Pointers]
