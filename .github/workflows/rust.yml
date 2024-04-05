@@ -14,14 +14,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-      # Testing folder working directory.
-        working-directory: '[02] guessing_game' 
-
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+    - name: Build each folder with Cargo.toml
+      run: |
+        find . -type f -name 'Cargo.toml' -exec dirname {} \; | while read -r dir; do
+          pushd "$dir"
+          cargo build
+          cargo test          
+          popd
+        done
