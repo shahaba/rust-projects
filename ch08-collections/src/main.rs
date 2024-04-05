@@ -55,20 +55,20 @@ fn main() {
 
     println!("{:?}", scores);
 
-    let mut v: Vec<i32> = vec![1, 2];
+    //let mut v: Vec<i32> = vec![1, 2];
 
-    for mut n_ref in 0 .. v.len() {
-        n_ref += 1
+   // for mut n_ref in 0 .. v.len() {
+   //     n_ref += 1
 
-        println!("Modified value: {}", n_ref);
-    }  
+   //     println!("Modified value: {}", n_ref);
+   // }  
 }
 
 // Running this function would cause Rust to panic
-fn dup_in_place(v: &mut Vec<i32>){
-  // we can't mutate v when we use an iterator
-    // because Rust will deallocate the old reference when we add new data
-    for n_ref in v.iter(){
-        v.push(*n_ref); // duplicate the value in place
-    }
-}
+//fn dup_in_place(v: &mut Vec<i32>){
+//  // we can't mutate v when we use an iterator
+//    // because Rust will deallocate the old reference when we add new data
+//    for n_ref in v.iter(){
+//        v.push(*n_ref); // duplicate the value in place
+//    }
+//}

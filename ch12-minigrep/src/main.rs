@@ -6,9 +6,14 @@ use minigrep::Config;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let config = Config::new(&args).unwrap_or_else(|err| {
-        eprintln!("Problems parsing arguments: {err}");
-        process::exit(1);
+    let config = Config::new(&args).unwrap_or_else(|_err| {
+        Config {
+            query: "the".to_owned(),
+            file_path: "poem.txt".to_owned(),
+            ignore_case: false
+        }
+       // eprintln!("Problems parsing arguments: {err}");
+       // process::exit(1);
     });
 
     eprintln!("Searching for {}", config.query);
