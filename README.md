@@ -1,6 +1,6 @@
 # Rust Projects
 
-![Rust workflow](https://github.com/shahaba/rust-projects/actions/workflows/rust.yml/badge.svg)
+![Rust workflow](https://github.com/shahaba/rust-projects/actions/workflows/rust.yml/badge.svg) [![Build status](https://badge.buildkite.com/679c89fce737457b4c095d3f2888701c89bcdb3bb41dfcf502.svg)](https://buildkite.com/personal-192/rust-project-builder)
 
 - [CH 2 - Guessing Game](ch02-guessing-game/README.md)
 - [CH 3 - Variables](ch-03-variables/README.md)
