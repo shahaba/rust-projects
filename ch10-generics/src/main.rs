@@ -14,19 +14,19 @@ fn main() {
 
     println!("Largest value is: {}", largest_i32(&vec));
 
-    // using our generic function 
+    // using our generic function
     println!("Largest generic value is: {}", largest(&vec));
 
     let pt = Point { x: 1, y: 10 };
 
-    println!("{:?}", pt);
+    println!("{:?}, {}, {}", pt, pt.x, pt.y);
 
     let pair = Pair::new(1, 10);
     pair.cmp_display();
 }
 
 // Using generics instead of types as input params
-// we need to restrict T to being comaparable 
+// we need to restrict T to being comaparable
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
@@ -38,7 +38,6 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
 
     largest
 }
-
 
 // Using explicit types as parameters to functions
 fn largest_i32(list: &[i32]) -> &i32 {
