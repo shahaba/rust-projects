@@ -9,6 +9,7 @@ find . -name 'Cargo.toml' | while read -r makefilePath; do
   echo "  - label: \"Build $(basename "$dir")\"" >> dynamic-pipeline.yml
   echo "    command:" >> dynamic-pipeline.yml
   echo "      - \"cd '$dir' && cargo build && cargo test\"" >> dynamic-pipeline.yml
+  echo "      - wait" >> dynamic-pipeline.yml
 done
 
 # Upload the dynamic pipeline to Buildkite

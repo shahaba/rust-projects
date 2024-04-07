@@ -23,7 +23,7 @@ fn main() {
     // dup_in_place(&mut v);
     //
 
-    let mut s = String::new();
+    let s = String::new();
     println!("{s}");
 
     let data = "initial comment";
@@ -57,11 +57,11 @@ fn main() {
 
     //let mut v: Vec<i32> = vec![1, 2];
 
-   // for mut n_ref in 0 .. v.len() {
-   //     n_ref += 1
+    // for mut n_ref in 0 .. v.len() {
+    //     n_ref += 1
 
-   //     println!("Modified value: {}", n_ref);
-   // }  
+    //     println!("Modified value: {}", n_ref);
+    // }
 }
 
 // Running this function would cause Rust to panic
