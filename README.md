@@ -1,6 +1,6 @@
 # Rust Projects
 
-![Rust workflow](https://github.com/shahaba/rust-projects/actions/workflows/rust.yml/badge.svg) [![Build status](https://badge.buildkite.com/679c89fce737457b4c095d3f2888701c89bcdb3bb41dfcf502.svg)](https://buildkite.com/personal-192/rust-project-builder)
+![Rust workflow](https://github.com/shahaba/rust-projects/actions/workflows/rust.yml/badge.svg) [![Build status](https://badge.buildkite.com/679c89fce737457b4c095d3f2888701c89bcdb3bb41dfcf502.svg)](https://buildkite.com/personal-192/rust-project-builder) [![codecov](https://codecov.io/gh/shahaba/rust-projects/graph/badge.svg?token=CQ1RTWRTC6)](https://codecov.io/gh/shahaba/rust-projects)
 
 - [CH 2 - Guessing Game](ch02-guessing-game/README.md)
 - [CH 3 - Variables](ch-03-variables/README.md)
@@ -13,9 +13,10 @@
 - [CH 10 - Generics](ch10-generics/README.md)
 - [CH 11 - Automated Tests](ch11-automated-tests/README.md)
 - [CH 12 - IO Project](ch12-minigrep/README.md)
-- [CH 13 - Functional Language Features]
-- [CH 14 - Cargo & Crates]
-- [CH 15 - Smart Pointers]
+- [CH 13 - Functional Language Features](ch13-closures/README.md)
+- CH 14 - Cargo & Crates (Skipped)
+- [CH 15 - Smart Pointers](ch15-smart-pointers/README.md)
+
 
 My working repo for going through the [Rust Book](https://rust-book.cs.brown.edu/title-page.html)
 
