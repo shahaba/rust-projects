@@ -26,3 +26,5 @@ You can go into any of the folders and run: `cargo run` to compile and run the r
 ## Basic Rust Algorithms
 
 Projects around implementing basic algorithms in Rust
+
+Test
