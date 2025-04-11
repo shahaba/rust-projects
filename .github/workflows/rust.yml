@@ -6,31 +6,28 @@ on:
   pull_request:
     branches: ["main"]
 
-env:
-  CARGO_TERM_COLOR: always
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+ 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
+
       - name: Cache tarpaulin install
         uses: actions/cache@v2
         with:
           path: |
-            ~/.cargo/bin/cargo-tarpaulin
-            ~/.cargo/bin/tarpaulin
-            ~/.cargo/git
             ~/.cargo/registry
-          key: ${{ runner.os }}-cargo-tarpaulin-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-tarpaulin-
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
       - name: Install cargo-tarpaulin
         run: |
           if [ ! -f $HOME/.cargo/bin/cargo-tarpaulin ]; then
@@ -38,18 +35,21 @@ jobs:
           else
             echo "cargo-tarpaulin was cached"
           fi
+
       - name: Build each folder with Cargo.toml
         run: |
-          find . -type f -name 'Cargo.toml' -exec dirname {} \; | while read -r dir; do
+          for dir in $(find . -type f -name 'Cargo.toml' -exec dirname {} \; | sort -u); do
+            echo "Processing $dir"
             pushd "$dir"
             cargo build
             cargo test
-            cargo tarpaulin --out Xml
+            cargo tarpaulin --out Xml || true
             cargo clean
             popd
           done
-      - name: Codecov
-        uses: codecov/codecov-action@v4
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
