@@ -1,8 +1,22 @@
-<!--- Provide a general summary of your changes in the Title above -->
-
 # Description
-<!--- Describe your changes in detail -->
+<!--
+- **What:** Brief summary of changes.
+- **Why:** Purpose and impact of these changes.
+-->
 
-## Motivation and Context
-<!--- Why is this change required? What problem does it solve? -->
-<!--- If it fixes an open issue, please link to the issue here. -->
+## Related Issue(s)
+<!--Link to any related issue(s) or mention "N/A".-->
+
+## Proposed Changes
+
+-
+
+## Checklist
+
+- [ ] Code compiles without errors.
+- [ ] Relevant documentation updated.
+- [ ] Tests written/updated and passing.
+- [ ] Manual testing performed.
+
+## Additional Notes
+<!-- Any extra details, screenshots, or context.-->
